@@ -80,8 +80,11 @@
         // valid segue
         
         ResultListViewController* destination = (ResultListViewController*)segue.destinationViewController;
-        destination.latitude = @"52.517070";
-        destination.longitude = @"13.389109";
+        destination.latitude = [NSString stringWithFormat:@"%+.6f",self.currentLocation.coordinate.latitude];
+        destination.longitude = [NSString stringWithFormat:@"%+.6f",self.currentLocation.coordinate.longitude];
+        
+//        destination.latitude = @"52.517070";
+//        destination.longitude = @"13.389109";
     }
 }
 
@@ -98,13 +101,9 @@
     
     if (abs(howRecent) < 15.0) {
         // If the event is recent, do something with it.
-        NSLog(@"latitude %+.6f, longitude %+.6f\n",
-              self.currentLocation.coordinate.latitude,
-              self.currentLocation.coordinate.longitude);
-        
-//        [self.currentLocationLabel setText:[NSString stringWithFormat:@"%+.6f - %+.6f",self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude]];
-//        [self.currentLocationLabel setNeedsLayout];
-        
+//        NSLog(@"latitude %+.6f, longitude %+.6f\n",
+//              self.currentLocation.coordinate.latitude,
+//              self.currentLocation.coordinate.longitude);
         [self.locationManager stopUpdatingLocation];
     }
 }

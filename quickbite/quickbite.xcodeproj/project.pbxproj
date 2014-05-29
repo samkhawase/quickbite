@@ -24,7 +24,6 @@
 		403119331935195700354660 /* ResultListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 403119321935195700354660 /* ResultListViewController.m */; };
 		403119371935199300354660 /* DataFetchService.m in Sources */ = {isa = PBXBuildFile; fileRef = 403119361935199300354660 /* DataFetchService.m */; };
 		4031193919351E6900354660 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4031193819351E6900354660 /* CoreLocation.framework */; };
-		40F10541193678110052593F /* mauerweg_1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 40F10540193678110052593F /* mauerweg_1.gpx */; };
 		40F1054519373F250052593F /* LocationDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F1054419373F250052593F /* LocationDetail.m */; };
 		40F105481937601E0052593F /* LocationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F105471937601E0052593F /* LocationDetailViewController.m */; };
 /* End PBXBuildFile section */
@@ -64,11 +63,11 @@
 		403119351935199300354660 /* DataFetchService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataFetchService.h; sourceTree = "<group>"; };
 		403119361935199300354660 /* DataFetchService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataFetchService.m; sourceTree = "<group>"; };
 		4031193819351E6900354660 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		40F10540193678110052593F /* mauerweg_1.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = mauerweg_1.gpx; path = quickbite/mauerweg_1.gpx; sourceTree = "<group>"; };
 		40F1054319373F250052593F /* LocationDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetail.h; sourceTree = "<group>"; };
 		40F1054419373F250052593F /* LocationDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetail.m; sourceTree = "<group>"; };
 		40F105461937601E0052593F /* LocationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailViewController.h; sourceTree = "<group>"; };
 		40F105471937601E0052593F /* LocationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailViewController.m; sourceTree = "<group>"; };
+		40F105491937713E0052593F /* Berlin.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Berlin.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +98,7 @@
 		403118F019350E8D00354660 = {
 			isa = PBXGroup;
 			children = (
-				40F10540193678110052593F /* mauerweg_1.gpx */,
+				40F105491937713E0052593F /* Berlin.gpx */,
 				4031190219350E8D00354660 /* quickbite */,
 				4031192119350E8D00354660 /* quickbiteTests */,
 				403118FB19350E8D00354660 /* Frameworks */,
@@ -271,7 +270,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40F10541193678110052593F /* mauerweg_1.gpx in Resources */,
 				4031191519350E8D00354660 /* Images.xcassets in Resources */,
 				4031190719350E8D00354660 /* InfoPlist.strings in Resources */,
 				4031191019350E8D00354660 /* Main.storyboard in Resources */,
