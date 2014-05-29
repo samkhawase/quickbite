@@ -148,11 +148,4 @@ static NSString *const cellId = @"LocationCell";
     [self performSegueWithIdentifier:@"SegueToLocationDetail" sender:self];
 }
 
-
-
-
-
-
-
-
 @end

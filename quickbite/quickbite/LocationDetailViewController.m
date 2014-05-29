@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *address;
 @property (weak, nonatomic) IBOutlet UILabel *type;
 @property (weak, nonatomic) IBOutlet UILabel *extraInfo;
-//@property (weak, nonatomic) IBOutlet MKMapView *locationMapView;
+@property (weak, nonatomic) IBOutlet MKMapView *locationMapView;
 
 @end
 
@@ -43,6 +43,25 @@
     [self.address setText:self.currentLocationDetails.display_name];
     [self.type setText:self.currentLocationDetails.type];
     [self.extraInfo setText:[NSString stringWithFormat:@"latitude: %@ longitude: %@",self.currentLocationDetails.latitude, self.currentLocationDetails.longitude]];
+    
+    // show the mapview
+    
+    CLLocationCoordinate2D thisLocation = CLLocationCoordinate2DMake([self.currentLocationDetails.latitude doubleValue], [self.currentLocationDetails.longitude doubleValue]);
+
+    MKPointAnnotation* point = [[MKPointAnnotation alloc] init];
+    point.coordinate = thisLocation;
+    point.title = self.currentLocationDetails.display_name;
+    
+    [self.locationMapView addAnnotation:point];
+    
+    MKCoordinateRegion adjustedRegion = [self.locationMapView regionThatFits:MKCoordinateRegionMakeWithDistance(thisLocation, 800, 800)];
+    
+    adjustedRegion.span.longitudeDelta = 0.005;
+    adjustedRegion.span.latitudeDelta = 0.005;
+    
+    [self.locationMapView setCenterCoordinate:thisLocation];
+    [self.locationMapView setRegion:adjustedRegion animated:YES];
+    
     
 }
 

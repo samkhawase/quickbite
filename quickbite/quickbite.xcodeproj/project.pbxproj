@@ -26,6 +26,7 @@
 		4031193919351E6900354660 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4031193819351E6900354660 /* CoreLocation.framework */; };
 		40F1054519373F250052593F /* LocationDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F1054419373F250052593F /* LocationDetail.m */; };
 		40F105481937601E0052593F /* LocationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F105471937601E0052593F /* LocationDetailViewController.m */; };
+		40F1054C193776000052593F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F1054B193776000052593F /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		40F105461937601E0052593F /* LocationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailViewController.h; sourceTree = "<group>"; };
 		40F105471937601E0052593F /* LocationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailViewController.m; sourceTree = "<group>"; };
 		40F105491937713E0052593F /* Berlin.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Berlin.gpx; sourceTree = "<group>"; };
+		40F1054B193776000052593F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40F1054C193776000052593F /* MapKit.framework in Frameworks */,
 				4031193919351E6900354660 /* CoreLocation.framework in Frameworks */,
 				403118FF19350E8D00354660 /* CoreGraphics.framework in Frameworks */,
 				4031190119350E8D00354660 /* UIKit.framework in Frameworks */,
@@ -98,7 +101,7 @@
 		403118F019350E8D00354660 = {
 			isa = PBXGroup;
 			children = (
-				40F105491937713E0052593F /* Berlin.gpx */,
+				40F1054A193774890052593F /* location-data */,
 				4031190219350E8D00354660 /* quickbite */,
 				4031192119350E8D00354660 /* quickbiteTests */,
 				403118FB19350E8D00354660 /* Frameworks */,
@@ -118,6 +121,7 @@
 		403118FB19350E8D00354660 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				40F1054B193776000052593F /* MapKit.framework */,
 				4031193819351E6900354660 /* CoreLocation.framework */,
 				403118FC19350E8D00354660 /* Foundation.framework */,
 				403118FE19350E8D00354660 /* CoreGraphics.framework */,
@@ -192,6 +196,14 @@
 				40F1054419373F250052593F /* LocationDetail.m */,
 			);
 			name = models;
+			sourceTree = "<group>";
+		};
+		40F1054A193774890052593F /* location-data */ = {
+			isa = PBXGroup;
+			children = (
+				40F105491937713E0052593F /* Berlin.gpx */,
+			);
+			name = "location-data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

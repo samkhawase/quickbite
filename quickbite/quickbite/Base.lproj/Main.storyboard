@@ -154,6 +154,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Zt3-fK-4Sz">
+                                <rect key="frame" x="20" y="227" width="280" height="321"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -169,6 +173,7 @@
                         <outlet property="description" destination="wG8-56-nJF" id="A89-gy-2fi"/>
                         <outlet property="extraInfo" destination="m6M-Cj-jfC" id="1WC-Aa-Fs8"/>
                         <outlet property="locationId" destination="KgM-Fr-gJC" id="yNw-NU-1Cc"/>
+                        <outlet property="locationMapView" destination="Zt3-fK-4Sz" id="9lJ-8x-7ic"/>
                         <outlet property="type" destination="cuS-af-VKx" id="qSJ-rQ-bki"/>
                     </connections>
                 </viewController>
