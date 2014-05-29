@@ -9,6 +9,7 @@
 #import "ResultListViewController.h"
 #import "DataFetchService.h"
 #import "LocationDetail.h"
+#import "LocationDetailViewController.h"
 
 static NSString *const cellId = @"LocationCell";
 
@@ -19,6 +20,7 @@ static NSString *const cellId = @"LocationCell";
 
 @property(strong, nonatomic) NSArray* jsonResults;
 @property (strong, nonatomic) NSMutableArray* listOfLocations;
+@property (strong, nonatomic) LocationDetail* selectedLocation;
 
 - (void) loadDataInBackground;
 
@@ -32,6 +34,14 @@ static NSString *const cellId = @"LocationCell";
     }
     return _listOfLocations;
 }
+
+//- (LocationDetail *)selectedLocation{
+//    if (nil == _selectedLocation) {
+//        _selectedLocation = [[LocationDetail alloc] init];
+//    }
+//    return _selectedLocation;
+//}
+
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
@@ -59,7 +69,7 @@ static NSString *const cellId = @"LocationCell";
 }
 
 - (void) loadDataInBackground{
-
+    
     [self.dataLoadingIndicator startAnimating];
     [self.dataLoadingIndicator setHidesWhenStopped:true];
     
@@ -96,22 +106,20 @@ static NSString *const cellId = @"LocationCell";
                  
                  [self.locationTableView reloadData];
              });
-
+             
          }
      }];
 }
 
+#pragma mark - Navigation
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"SegueToLocationDetail"] && self.selectedLocation != nil) {
+        LocationDetailViewController* destination = (LocationDetailViewController*)segue.destinationViewController;
+        destination.currentLocationDetails = self.selectedLocation;
+    }
+}
 
 - (IBAction)navigateBack:(id)sender {
     //    [self.navigationController popToRootViewControllerAnimated:YES];
@@ -136,8 +144,11 @@ static NSString *const cellId = @"LocationCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"selected row: %ld", (long)indexPath.row);
+    self.selectedLocation = [self.listOfLocations objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"SegueToLocationDetail" sender:self];
 }
+
+
 
 
 
