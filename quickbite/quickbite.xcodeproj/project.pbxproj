@@ -27,6 +27,7 @@
 		4031193919351E6900354660 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4031193819351E6900354660 /* CoreLocation.framework */; };
 		4081B4A11937925D00C774EB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4081B4A01937925D00C774EB /* CoreData.framework */; };
 		4081B4A41937927A00C774EB /* LocationModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4081B4A21937927A00C774EB /* LocationModel.xcdatamodeld */; };
+		40A7F7581969AFBC006F6893 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40A7F7571969AFBC006F6893 /* DefaultPreferences.plist */; };
 		40F1054519373F250052593F /* LocationDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F1054419373F250052593F /* LocationDetail.m */; };
 		40F105481937601E0052593F /* LocationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F105471937601E0052593F /* LocationDetailViewController.m */; };
 		40F1054C193776000052593F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F1054B193776000052593F /* MapKit.framework */; };
@@ -70,6 +71,7 @@
 		4031193819351E6900354660 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4081B4A01937925D00C774EB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		4081B4A31937927A00C774EB /* LocationModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocationModel.xcdatamodel; sourceTree = "<group>"; };
+		40A7F7571969AFBC006F6893 /* DefaultPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
 		40F1054319373F250052593F /* LocationDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetail.h; sourceTree = "<group>"; };
 		40F1054419373F250052593F /* LocationDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetail.m; sourceTree = "<group>"; };
 		40F105461937601E0052593F /* LocationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailViewController.h; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				4031190519350E8D00354660 /* InfoPlist.strings */,
 				4031190819350E8D00354660 /* main.m */,
 				4031190A19350E8D00354660 /* quickbite-Prefix.pch */,
+				40A7F7571969AFBC006F6893 /* DefaultPreferences.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4031191519350E8D00354660 /* Images.xcassets in Resources */,
+				40A7F7581969AFBC006F6893 /* DefaultPreferences.plist in Resources */,
 				4031190719350E8D00354660 /* InfoPlist.strings in Resources */,
 				4031191019350E8D00354660 /* Main.storyboard in Resources */,
 			);

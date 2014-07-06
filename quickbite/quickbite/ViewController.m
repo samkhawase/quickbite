@@ -89,10 +89,14 @@
               self.currentLocation.coordinate.latitude,
               self.currentLocation.coordinate.longitude);
         
+        __block NSString *savedGeocodedName = [[NSUserDefaults standardUserDefaults] stringForKey:@"CurrentLocation"];
+        
         dispatch_queue_t bgQueue = dispatch_queue_create("bgQueue", NULL);
         
         dispatch_async(bgQueue, ^{
             if (0 != self.currentLocation.coordinate.latitude && 0 != self.currentLocation.coordinate.longitude) {
+                
+                dispatch_semaphore_t waitingSem = dispatch_semaphore_create(0);
                 
                 [DataFetchService getReverseGeoCodedLocation:[NSString stringWithFormat:@"%f", self.currentLocation.coordinate.latitude]
                                                    longitude:[NSString stringWithFormat:@"%f", self.currentLocation.coordinate.longitude]
@@ -101,17 +105,30 @@
                      NSError* err;
                      NSDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&err];
                      
-                     //NSLog(@"Count: %d", [returnedDict count]);
+                     NSString *locationNameFromSpace = [returnedDict objectForKey:@"display_name"];
                      
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         [self.currentLocationLabel setText:[returnedDict objectForKey:@"display_name"]];
-                         [self.currentLocationLabel setFont:[UIFont systemFontOfSize:12]];
-                         [self.currentLocationLabel setNeedsLayout];
-                         [self.locationLoadingIndicator stopAnimating];
-                         [self.locationLoadingIndicator setHidden:true];
-                     });
+                     if (nil == savedGeocodedName || ![savedGeocodedName isEqualToString:locationNameFromSpace]) {
+                         savedGeocodedName = locationNameFromSpace;
+                         [[NSUserDefaults standardUserDefaults] setObject:self.currentLocationLabel.text forKey:@"CurrentLocation"];
+                     }
+                     
+                     // end the wait
+                     dispatch_semaphore_signal(waitingSem);
+                     
+                     //NSLog(@"Count: %d", [returnedDict count]);
+                     //NSLog(@"Running on main thread? %@", [[NSThread currentThread] isMainThread] ? @"YES" : @"NO");
                  }];
+                
+                dispatch_semaphore_wait(waitingSem, DISPATCH_TIME_FOREVER);
             }
+            // this is executed either right away or after the semaphore signal
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.currentLocationLabel setText:savedGeocodedName];
+                [self.currentLocationLabel setFont:[UIFont systemFontOfSize:12]];
+                [self.currentLocationLabel setNeedsLayout];
+                [self.locationLoadingIndicator stopAnimating];
+                [self.locationLoadingIndicator setHidden:true];
+            });
         });
         
         [self.locationManager stopUpdatingLocation];
