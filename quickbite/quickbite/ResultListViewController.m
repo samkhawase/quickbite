@@ -10,6 +10,7 @@
 #import "DataFetchService.h"
 #import "LocationDetail.h"
 #import "LocationDetailViewController.h"
+#import "CacheService.h"
 
 static NSString *const cellId = @"LocationCell";
 
@@ -107,6 +108,8 @@ static NSString *const cellId = @"LocationCell";
                  [self.locationTableView reloadData];
              });
              
+             [CacheService saveLocationsInList:self.listOfLocations];
+
          }
      }];
 }

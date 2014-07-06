@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Entity" syncable="YES">
+    <entity name="Location" syncable="YES">
         <attribute name="boundingBox" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="class_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="display_name" optional="YES" attributeType="String" syncable="YES"/>
@@ -14,6 +14,6 @@
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Entity" positionX="-63" positionY="-18" width="128" height="210"/>
+        <element name="Location" positionX="-63" positionY="-18" width="128" height="210"/>
     </elements>
 </model>

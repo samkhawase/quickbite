@@ -28,6 +28,7 @@
 		4081B4A11937925D00C774EB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4081B4A01937925D00C774EB /* CoreData.framework */; };
 		4081B4A41937927A00C774EB /* LocationModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4081B4A21937927A00C774EB /* LocationModel.xcdatamodeld */; };
 		40A7F7581969AFBC006F6893 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40A7F7571969AFBC006F6893 /* DefaultPreferences.plist */; };
+		40A7F75B1969DD21006F6893 /* CacheService.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A7F75A1969DD21006F6893 /* CacheService.m */; };
 		40F1054519373F250052593F /* LocationDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F1054419373F250052593F /* LocationDetail.m */; };
 		40F105481937601E0052593F /* LocationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F105471937601E0052593F /* LocationDetailViewController.m */; };
 		40F1054C193776000052593F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F1054B193776000052593F /* MapKit.framework */; };
@@ -72,6 +73,8 @@
 		4081B4A01937925D00C774EB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		4081B4A31937927A00C774EB /* LocationModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocationModel.xcdatamodel; sourceTree = "<group>"; };
 		40A7F7571969AFBC006F6893 /* DefaultPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
+		40A7F7591969DD21006F6893 /* CacheService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheService.h; sourceTree = "<group>"; };
+		40A7F75A1969DD21006F6893 /* CacheService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheService.m; sourceTree = "<group>"; };
 		40F1054319373F250052593F /* LocationDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetail.h; sourceTree = "<group>"; };
 		40F1054419373F250052593F /* LocationDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetail.m; sourceTree = "<group>"; };
 		40F105461937601E0052593F /* LocationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailViewController.h; sourceTree = "<group>"; };
@@ -196,6 +199,8 @@
 			children = (
 				403119351935199300354660 /* DataFetchService.h */,
 				403119361935199300354660 /* DataFetchService.m */,
+				40A7F7591969DD21006F6893 /* CacheService.h */,
+				40A7F75A1969DD21006F6893 /* CacheService.m */,
 			);
 			name = services;
 			sourceTree = "<group>";
@@ -368,6 +373,7 @@
 				40F105481937601E0052593F /* LocationDetailViewController.m in Sources */,
 				4031190D19350E8D00354660 /* AppDelegate.m in Sources */,
 				4081B4A41937927A00C774EB /* LocationModel.xcdatamodeld in Sources */,
+				40A7F75B1969DD21006F6893 /* CacheService.m in Sources */,
 				40F1054519373F250052593F /* LocationDetail.m in Sources */,
 				4031190919350E8D00354660 /* main.m in Sources */,
 				403119331935195700354660 /* ResultListViewController.m in Sources */,
