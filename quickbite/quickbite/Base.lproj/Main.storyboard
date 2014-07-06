@@ -55,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-351" y="-183"/>
+            <point key="canvasLocation" x="-425" y="396"/>
         </scene>
         <!--Result List View Controller-->
         <scene sceneID="0Od-Hp-Auo">
@@ -110,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cf7-Yv-WyW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6" y="414"/>
+            <point key="canvasLocation" x="30" y="396"/>
         </scene>
         <!--Location Detail View Controller-->
         <scene sceneID="HfD-Hl-tWU">
@@ -179,26 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5rk-dc-je9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="828" y="414"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="AQZ-h4-50b">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yv5-3c-stS" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="3rh-Lx-1q7"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Eqt-2b-ACX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="XXa-x5-wj9" kind="relationship" relationship="rootViewController" id="tC1-ta-VlD"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zZw-it-GRO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-374" y="819"/>
+            <point key="canvasLocation" x="504" y="396"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="roh-8R-7vF">
@@ -216,25 +197,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xqs-tq-lQT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-745" y="454"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Jj3-00-8ti">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hxE-yz-LC2" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EEH-mt-egG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="4ed-PA-gyQ" kind="relationship" relationship="rootViewController" id="nku-Ik-QXU"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8kX-5A-WHN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="402" y="414"/>
+            <point key="canvasLocation" x="-879" y="396"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -242,8 +205,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="tC1-ta-VlD"/>
-        <segue reference="vxK-v6-e5j"/>
-    </inferredMetricsTieBreakers>
 </document>
