@@ -34,7 +34,7 @@
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
     // Set a movement threshold for new events.
-    //self.locationManager.distanceFilter = 500; // meters
+    self.locationManager.distanceFilter = 500; // meters
     [self.locationManager startUpdatingLocation];
 
 }
@@ -44,24 +44,7 @@
     
     [self.locationLoadingIndicator startAnimating];
     
-    NSLog(@"%+.6f, %+.6f",self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude);
-    
-    //52.517070, 13.389109
-    [DataFetchService getReverseGeoCodedLocation:@"52.517070"
-                                       longitude:@"13.389109"
-                                       withBlock:^(NSData *data,NSURLResponse *response,NSError *error)
-    {
-        NSError* err;
-        NSDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&err];
-        //NSLog(@"Count: %d", [returnedDict count]);
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.currentLocationLabel setText:[returnedDict objectForKey:@"display_name"]];
-            [self.currentLocationLabel setNeedsLayout];
-            [self.locationLoadingIndicator stopAnimating];
-            [self.locationLoadingIndicator setHidden:true];
-        });
-    }];
-    //[self.currentLocationLabel setText:@"Berlin, DE"];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,11 +82,38 @@
     NSDate* eventDate = self.currentLocation.timestamp;
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
     
+    // If the event is recent, do something with it.
     if (abs(howRecent) < 15.0) {
-        // If the event is recent, do something with it.
-//        NSLog(@"latitude %+.6f, longitude %+.6f\n",
-//              self.currentLocation.coordinate.latitude,
-//              self.currentLocation.coordinate.longitude);
+        
+        NSLog(@"latitude %+.6f, longitude %+.6f\n",
+              self.currentLocation.coordinate.latitude,
+              self.currentLocation.coordinate.longitude);
+        
+        dispatch_queue_t bgQueue = dispatch_queue_create("bgQueue", NULL);
+        
+        dispatch_async(bgQueue, ^{
+            if (0 != self.currentLocation.coordinate.latitude && 0 != self.currentLocation.coordinate.longitude) {
+                
+                [DataFetchService getReverseGeoCodedLocation:[NSString stringWithFormat:@"%f", self.currentLocation.coordinate.latitude]
+                                                   longitude:[NSString stringWithFormat:@"%f", self.currentLocation.coordinate.longitude]
+                                                   withBlock:^(NSData *data,NSURLResponse *response,NSError *error)
+                 {
+                     NSError* err;
+                     NSDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&err];
+                     
+                     //NSLog(@"Count: %d", [returnedDict count]);
+                     
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         [self.currentLocationLabel setText:[returnedDict objectForKey:@"display_name"]];
+                         [self.currentLocationLabel setFont:[UIFont systemFontOfSize:12]];
+                         [self.currentLocationLabel setNeedsLayout];
+                         [self.locationLoadingIndicator stopAnimating];
+                         [self.locationLoadingIndicator setHidden:true];
+                     });
+                 }];
+            }
+        });
+        
         [self.locationManager stopUpdatingLocation];
     }
 }
