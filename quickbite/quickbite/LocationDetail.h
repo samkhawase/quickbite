@@ -38,7 +38,7 @@
 @property (strong, nonatomic) NSString* latitude;
 @property (strong, nonatomic) NSString* longitude;
 @property (strong, nonatomic) NSString* display_name;
-@property (strong, nonatomic) NSString* class;
+@property (strong, nonatomic) NSString* class_type;
 @property (strong, nonatomic) NSString* type;
 @property (strong, nonatomic) NSString* importance;
 @property (strong, nonatomic) NSString* icon;

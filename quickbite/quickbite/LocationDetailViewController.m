@@ -39,7 +39,7 @@
     [super viewDidAppear:animated];
     
     [self.locationId setText:self.currentLocationDetails.place_id];
-    [self.description setText:self.currentLocationDetails.class];
+    [self.description setText:self.currentLocationDetails.class_type];
     [self.address setText:self.currentLocationDetails.display_name];
     [self.type setText:self.currentLocationDetails.type];
     [self.extraInfo setText:[NSString stringWithFormat:@"latitude: %@ longitude: %@",self.currentLocationDetails.latitude, self.currentLocationDetails.longitude]];
