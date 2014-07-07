@@ -34,7 +34,7 @@
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
     // Set a movement threshold for new events.
-    //self.locationManager.distanceFilter = 500; // meters
+    self.locationManager.distanceFilter = 500; // meters
     [self.locationManager startUpdatingLocation];
 
 }
@@ -44,24 +44,7 @@
     
     [self.locationLoadingIndicator startAnimating];
     
-    NSLog(@"%+.6f, %+.6f",self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude);
-    
-    //52.517070, 13.389109
-    [DataFetchService getReverseGeoCodedLocation:@"52.517070"
-                                       longitude:@"13.389109"
-                                       withBlock:^(NSData *data,NSURLResponse *response,NSError *error)
-    {
-        NSError* err;
-        NSDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&err];
-        //NSLog(@"Count: %d", [returnedDict count]);
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.currentLocationLabel setText:[returnedDict objectForKey:@"display_name"]];
-            [self.currentLocationLabel setNeedsLayout];
-            [self.locationLoadingIndicator stopAnimating];
-            [self.locationLoadingIndicator setHidden:true];
-        });
-    }];
-    //[self.currentLocationLabel setText:@"Berlin, DE"];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,11 +82,55 @@
     NSDate* eventDate = self.currentLocation.timestamp;
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
     
+    // If the event is recent, do something with it.
     if (abs(howRecent) < 15.0) {
-        // If the event is recent, do something with it.
-//        NSLog(@"latitude %+.6f, longitude %+.6f\n",
-//              self.currentLocation.coordinate.latitude,
-//              self.currentLocation.coordinate.longitude);
+        
+        NSLog(@"latitude %+.6f, longitude %+.6f\n",
+              self.currentLocation.coordinate.latitude,
+              self.currentLocation.coordinate.longitude);
+        
+        __block NSString *savedGeocodedName = [[NSUserDefaults standardUserDefaults] stringForKey:@"CurrentLocation"];
+        
+        dispatch_queue_t bgQueue = dispatch_queue_create("bgQueue", NULL);
+        
+        dispatch_async(bgQueue, ^{
+            if (0 != self.currentLocation.coordinate.latitude && 0 != self.currentLocation.coordinate.longitude) {
+                
+                dispatch_semaphore_t waitingSem = dispatch_semaphore_create(0);
+                
+                [DataFetchService getReverseGeoCodedLocation:[NSString stringWithFormat:@"%f", self.currentLocation.coordinate.latitude]
+                                                   longitude:[NSString stringWithFormat:@"%f", self.currentLocation.coordinate.longitude]
+                                                   withBlock:^(NSData *data,NSURLResponse *response,NSError *error)
+                 {
+                     NSError* err;
+                     NSDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&err];
+                     
+                     NSString *locationNameFromSpace = [returnedDict objectForKey:@"display_name"];
+                     
+                     if (nil == savedGeocodedName || ![savedGeocodedName isEqualToString:locationNameFromSpace]) {
+                         savedGeocodedName = locationNameFromSpace;
+                         [[NSUserDefaults standardUserDefaults] setObject:self.currentLocationLabel.text forKey:@"CurrentLocation"];
+                     }
+                     
+                     // end the wait
+                     dispatch_semaphore_signal(waitingSem);
+                     
+                     //NSLog(@"Count: %d", [returnedDict count]);
+                     //NSLog(@"Running on main thread? %@", [[NSThread currentThread] isMainThread] ? @"YES" : @"NO");
+                 }];
+                
+                dispatch_semaphore_wait(waitingSem, DISPATCH_TIME_FOREVER);
+            }
+            // this is executed either right away or after the semaphore signal
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.currentLocationLabel setText:savedGeocodedName];
+                [self.currentLocationLabel setFont:[UIFont systemFontOfSize:12]];
+                [self.currentLocationLabel setNeedsLayout];
+                [self.locationLoadingIndicator stopAnimating];
+                [self.locationLoadingIndicator setHidden:true];
+            });
+        });
+        
         [self.locationManager stopUpdatingLocation];
     }
 }

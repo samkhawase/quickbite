@@ -39,9 +39,11 @@
     [super viewDidAppear:animated];
     
     [self.locationId setText:self.currentLocationDetails.place_id];
-    [self.description setText:self.currentLocationDetails.class_type];
+//    [self.description setText:self.currentLocationDetails.class_type];
     [self.address setText:self.currentLocationDetails.display_name];
     [self.type setText:self.currentLocationDetails.type];
+    
+    // replace with distance from me
     [self.extraInfo setText:[NSString stringWithFormat:@"latitude: %@ longitude: %@",self.currentLocationDetails.latitude, self.currentLocationDetails.longitude]];
     
     // show the mapview

@@ -10,6 +10,7 @@
 #import "DataFetchService.h"
 #import "LocationDetail.h"
 #import "LocationDetailViewController.h"
+#import "CacheService.h"
 
 static NSString *const cellId = @"LocationCell";
 
@@ -102,11 +103,13 @@ static NSString *const cellId = @"LocationCell";
              }];
              
              dispatch_async(dispatch_get_main_queue(), ^{
-                 [self.dataLoadingIndicator stopAnimating];
                  
+                 [self.dataLoadingIndicator stopAnimating];
                  [self.locationTableView reloadData];
              });
              
+             [CacheService saveLocationsInList:self.listOfLocations];
+
          }
      }];
 }
@@ -135,6 +138,8 @@ static NSString *const cellId = @"LocationCell";
     LocationDetail* locationAtThisIndex = [self.listOfLocations objectAtIndex:indexPath.row];
     
     [thisCell.textLabel setText:locationAtThisIndex.display_name];
+    [thisCell.textLabel setFont:[UIFont systemFontOfSize:12]];
+    thisCell.textLabel.numberOfLines = 0;
     
     return thisCell;
 }
