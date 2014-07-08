@@ -26,7 +26,9 @@
     return _sharedInstance;
 }
 
-+ (NSString *)getReverseGeoCodedLocation:(NSString *)lat longitude:(NSString *)lon withBlock:(void (^)(NSData *, NSURLResponse *, NSError *))returnedBlock{
++ (NSString *)getReverseGeoCodedLocation:(NSString *)lat
+                               longitude:(NSString *)lon
+                               withBlock:(void (^)(NSData *, NSURLResponse *, NSError *))returnedBlock{
 
     NSString* locationName = [[NSString alloc]init];
     

@@ -14,7 +14,7 @@
 
 + (CacheService *) sharedInstance;
 
-+ (NSArray*) getAllLocationsForLatitude:(NSString*) latitude
++ (NSMutableArray*) getAllLocationsForLatitude:(NSString*) latitude
                             andLongitude:(NSString*) longitude;
 
 + (BOOL) saveLocationsInList:(NSArray*) fetchedLocations;

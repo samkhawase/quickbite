@@ -74,6 +74,19 @@ static NSString *const cellId = @"LocationCell";
     [self.dataLoadingIndicator startAnimating];
     [self.dataLoadingIndicator setHidesWhenStopped:true];
     
+    // Check in local cache if present
+    self.listOfLocations = [CacheService getAllLocationsForLatitude:self.latitude andLongitude:self.longitude];
+    
+    if (self.listOfLocations.count > 0) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self.dataLoadingIndicator stopAnimating];
+            [self.locationTableView reloadData];
+        });
+        return;
+    }
+
+    // fetch only if the list is empty
     [DataFetchService getPlacesNearLocation:self.latitude
                                   longitude:self.longitude
                            withLocationType:@"pub"

@@ -65,9 +65,7 @@
         ResultListViewController* destination = (ResultListViewController*)segue.destinationViewController;
         destination.latitude = [NSString stringWithFormat:@"%+.6f",self.currentLocation.coordinate.latitude];
         destination.longitude = [NSString stringWithFormat:@"%+.6f",self.currentLocation.coordinate.longitude];
-        
-//        destination.latitude = @"52.517070";
-//        destination.longitude = @"13.389109";
+
     }
 }
 
