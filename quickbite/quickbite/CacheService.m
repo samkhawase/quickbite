@@ -70,7 +70,7 @@
         CLLocationDistance distance = [thisLocation distanceFromLocation:thatLocation];
         
         if (distance > 2000) {
-            NSLog(@"\n%f will be removed: %@", distance, aLocationObject.display_name);
+            NSLog(@"\t %f will be removed", distance);
             [indexedDelete addIndex:currentIdx];
         }
         currentIdx++;
@@ -96,7 +96,9 @@
         NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Location" inManagedObjectContext:saveMoc];
         [fetchRequest setEntity:entityDescription];
         
-        NSPredicate *checkPredicate = [NSPredicate predicateWithFormat:@"(latitude = %@) AND (longitude = %@)", loopLocation.latitude, loopLocation.longitude];
+        NSPredicate *checkPredicate = [NSPredicate predicateWithFormat:@"(latitude BEGINSWITH %@) AND (longitude BEGINSWITH %@)",
+                                       loopLocation.latitude, loopLocation.longitude];
+        
         [fetchRequest setPredicate:checkPredicate];
         
         NSError * fetchError;
@@ -131,6 +133,8 @@
         [locationInQuestion setValue:loopLocation.type forKey:@"type"];
         [locationInQuestion setValue:loopLocation.place_id forKey:@"place_id"];
         [locationInQuestion setValue:loopLocation.osm_type forKey:@"osm_type"];
+//        [locationInQuestion setValue:loopLocation.importance forKey:@"importance"];
+//        [locationInQuestion setValue:loopLocation.icon forKey:@"icon"];
 
         NSError *saveError;
         NSLog(@"saved? %@",[saveMoc save:&saveError] ? @"YES" : @"NO");
