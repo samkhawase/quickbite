@@ -121,6 +121,8 @@
             }
             // this is executed either right away or after the semaphore signal
             dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self.currentLocationLabel setBackgroundColor:[UIColor yellowColor]];
                 [self.currentLocationLabel setText:savedGeocodedName];
                 [self.currentLocationLabel setFont:[UIFont systemFontOfSize:12]];
                 [self.currentLocationLabel setNeedsLayout];

@@ -150,6 +150,17 @@ static NSString *const cellId = @"LocationCell";
     
     LocationDetail* locationAtThisIndex = [self.listOfLocations objectAtIndex:indexPath.row];
     
+    int countr = 0;
+    switch (countr) {
+        case 0:{
+            countr++;
+            break;
+        }
+            
+        default:
+            break;
+    }
+    
     [thisCell.textLabel setText:locationAtThisIndex.display_name];
     [thisCell.textLabel setFont:[UIFont systemFontOfSize:12]];
     thisCell.textLabel.numberOfLines = 0;
