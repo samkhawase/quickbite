@@ -32,6 +32,7 @@
 		40F1054519373F250052593F /* LocationDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F1054419373F250052593F /* LocationDetail.m */; };
 		40F105481937601E0052593F /* LocationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F105471937601E0052593F /* LocationDetailViewController.m */; };
 		40F1054C193776000052593F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F1054B193776000052593F /* MapKit.framework */; };
+		BA8F2924196FE57400BAE7CD /* ResultListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA8F2923196FE57400BAE7CD /* ResultListTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		40F105491937713E0052593F /* Berlin.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Berlin.gpx; sourceTree = "<group>"; };
 		40F1054B193776000052593F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8838E28106224D3FA2FBD259 /* libPods-quickbite.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-quickbite.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA8F2922196FE57400BAE7CD /* ResultListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultListTableViewCell.h; sourceTree = "<group>"; };
+		BA8F2923196FE57400BAE7CD /* ResultListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultListTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +154,7 @@
 		4031190219350E8D00354660 /* quickbite */ = {
 			isa = PBXGroup;
 			children = (
+				BA8F2921196FE53600BAE7CD /* Components */,
 				40F1054219373F0F0052593F /* models */,
 				403119341935197900354660 /* services */,
 				40A7F75419698783006F6893 /* ViewControllers */,
@@ -233,6 +237,15 @@
 				40F105491937713E0052593F /* Berlin.gpx */,
 			);
 			name = "location-data";
+			sourceTree = "<group>";
+		};
+		BA8F2921196FE53600BAE7CD /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				BA8F2922196FE57400BAE7CD /* ResultListTableViewCell.h */,
+				BA8F2923196FE57400BAE7CD /* ResultListTableViewCell.m */,
+			);
+			name = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,6 +383,7 @@
 			files = (
 				4031191319350E8D00354660 /* ViewController.m in Sources */,
 				403119371935199300354660 /* DataFetchService.m in Sources */,
+				BA8F2924196FE57400BAE7CD /* ResultListTableViewCell.m in Sources */,
 				40F105481937601E0052593F /* LocationDetailViewController.m in Sources */,
 				4031190D19350E8D00354660 /* AppDelegate.m in Sources */,
 				4081B4A41937927A00C774EB /* LocationModel.xcdatamodeld in Sources */,

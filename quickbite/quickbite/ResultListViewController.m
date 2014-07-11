@@ -11,6 +11,7 @@
 #import "LocationDetail.h"
 #import "LocationDetailViewController.h"
 #import "CacheService.h"
+#import "ResultListTableViewCell.h"
 
 static NSString *const cellId = @"LocationCell";
 
@@ -146,7 +147,8 @@ static NSString *const cellId = @"LocationCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell *thisCell = [self.locationTableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
+//    UITableViewCell *thisCell = [self.locationTableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
+        ResultListTableViewCell *thisCell = [self.locationTableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
     
     LocationDetail* locationAtThisIndex = [self.listOfLocations objectAtIndex:indexPath.row];
     
@@ -162,8 +164,6 @@ static NSString *const cellId = @"LocationCell";
     }
     
     [thisCell.textLabel setText:locationAtThisIndex.display_name];
-    [thisCell.textLabel setFont:[UIFont systemFontOfSize:12]];
-    thisCell.textLabel.numberOfLines = 0;
     
     return thisCell;
 }
