@@ -97,6 +97,9 @@ static NSString *const cellId = @"LocationCell";
              NSError* err;
              self.jsonResults = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&err];
              
+             self.listOfLocations = [[CacheService saveLocationsInList:self.jsonResults] mutableCopy];
+             
+             /*
              [self.jsonResults enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop){
                  NSDictionary* currentLocationFromJson = (NSDictionary*)obj;
                  
@@ -115,6 +118,7 @@ static NSString *const cellId = @"LocationCell";
                  [self.listOfLocations addObject:location];
                  
              }];
+              */
              
              dispatch_async(dispatch_get_main_queue(), ^{
                  
@@ -122,7 +126,7 @@ static NSString *const cellId = @"LocationCell";
                  [self.locationTableView reloadData];
              });
              
-             [CacheService saveLocationsInList:self.listOfLocations];
+//             [CacheService saveLocationsInList:self.listOfLocations];
 
          }
      }];

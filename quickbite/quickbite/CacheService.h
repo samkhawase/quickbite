@@ -17,7 +17,7 @@
 + (NSMutableArray*) getAllLocationsForLatitude:(NSString*) latitude
                             andLongitude:(NSString*) longitude;
 
-+ (BOOL) saveLocationsInList:(NSArray*) fetchedLocations;
++ (NSArray*) saveLocationsInList:(NSArray*) fetchedLocations;
 
 
 @end

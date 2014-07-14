@@ -29,7 +29,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LocationDetail : NSObject
+@interface LocationDetail : NSManagedObject
 
 @property (strong, nonatomic) NSString* place_id;
 @property (strong, nonatomic) NSString* osm_type;

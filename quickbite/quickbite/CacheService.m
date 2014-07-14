@@ -83,17 +83,75 @@
     return objects;
 }
 
-+ (BOOL)saveLocationsInList:(NSArray *)fetchedLocations{
++ (NSArray*)saveLocationsInList:(NSArray *)fetchedLocations{
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *saveMoc = [appDelegate managedObjectContext];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Location" inManagedObjectContext:saveMoc];
     
+    __block NSMutableArray *arrayWithLocations = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary *currentLocationFromJson in fetchedLocations) {
+
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSPredicate *checkPredicate = [NSPredicate predicateWithFormat:@"(latitude BEGINSWITH %@) AND (longitude BEGINSWITH %@)",
+                                                                            [currentLocationFromJson objectForKey:@"lat"],
+                                                                            [currentLocationFromJson objectForKey:@"lon"]];
+        
+        [fetchRequest setPredicate:checkPredicate];
+        [fetchRequest setEntity:entityDescription];
+        
+        NSError *checkError;
+        NSArray *resultsOfCheckOperation = [saveMoc executeFetchRequest:fetchRequest error:&checkError];
+        
+        if (resultsOfCheckOperation.count > 0) {
+            //return;
+            [arrayWithLocations addObject:[resultsOfCheckOperation firstObject]];
+        } else {
+        
+            LocationDetail *location = [[LocationDetail alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:saveMoc];
+            
+            [location setPlace_id:[currentLocationFromJson objectForKey:@"place_id"]];
+            [location setOsm_type:[currentLocationFromJson objectForKey:@"osm_type"]];
+            [location setOsm_id:[currentLocationFromJson objectForKey:@"osm_id"]];
+            [location setLatitude:[currentLocationFromJson objectForKey:@"lat"]];
+            [location setLongitude:[currentLocationFromJson objectForKey:@"lon"]];
+            [location setDisplay_name:[currentLocationFromJson objectForKey:@"display_name"]];
+            
+            [location setType:[currentLocationFromJson objectForKey:@"type"]];
+            [location setImportance:[[currentLocationFromJson objectForKey:@"importance"] stringValue]];
+            [location setIcon:[currentLocationFromJson objectForKey:@"icon"]];
+            
+            // append the signs for the lat-longs
+            if ([location.latitude intValue] > 0) {
+                location.latitude = [NSString stringWithFormat:@"+%@", location.latitude];
+            } else {
+                location.latitude = [NSString stringWithFormat:@"-%@", location.latitude];
+            }
+            
+            if ([location.longitude intValue] > 0) {
+                location.longitude = [NSString stringWithFormat:@"+%@", location.longitude];
+            } else {
+                location.longitude = [NSString stringWithFormat:@"-%@", location.longitude];
+            }
+            
+            
+            [saveMoc save:&checkError];
+            
+            [arrayWithLocations addObject:location];
+        }
+        
+    }
+    
+    return arrayWithLocations;
+    
+    /*
     [fetchedLocations enumerateObjectsUsingBlock:^(LocationDetail *loopLocation, NSUInteger idx, BOOL *stop){
 
         NSLog(@"%@ - %@", loopLocation.latitude, loopLocation.longitude);
         
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Location" inManagedObjectContext:saveMoc];
+        
         [fetchRequest setEntity:entityDescription];
         
         NSPredicate *checkPredicate = [NSPredicate predicateWithFormat:@"(latitude BEGINSWITH %@) AND (longitude BEGINSWITH %@)",
@@ -140,8 +198,7 @@
         NSLog(@"saved? %@",[saveMoc save:&saveError] ? @"YES" : @"NO");
         
     }];
-    
-    return YES;
+    */
 }
 
 /* No need for this, CLLocationDistance is better
