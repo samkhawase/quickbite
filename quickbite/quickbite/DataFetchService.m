@@ -34,8 +34,7 @@
     
     // http://open.mapquestapi.com/nominatim/v1/reverse.php?format=json&lat=52.517070&lon=13.389109
     
-    NSString* nominatimURL = [NSString
-                              stringWithFormat:@"http://open.mapquestapi.com/nominatim/v1/reverse.php?format=json&lat=%@&lon=%@", lat, lon];
+    NSString* nominatimURL = [NSString stringWithFormat:@"http://open.mapquestapi.com/nominatim/v1/reverse.php?key=OpG77EV5jNGTWkTUNa2tvySro6eyCNcF&format=json&lat=%@&lon=%@", lat, lon];
     
     NSURLSession *session = [NSURLSession sharedSession];
     
