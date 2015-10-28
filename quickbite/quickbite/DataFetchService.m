@@ -55,7 +55,7 @@
     int fetchLimit = 20;
 
  
-    NSString* nominatimSearchUrlWithParams = [NSString stringWithFormat:@"http://open.mapquestapi.com/nominatim/v1/search.php?format=json&q=%@ near [%@, %@]&limit=%d",locationType,latitude, longitude,fetchLimit];
+    NSString* nominatimSearchUrlWithParams = [NSString stringWithFormat:@"http://open.mapquestapi.com/nominatim/v1/search.php?key=OpG77EV5jNGTWkTUNa2tvySro6eyCNcF&format=json&q=%@ near [%@, %@]&limit=%d",locationType,latitude, longitude,fetchLimit];
 
     NSString* urlstr = [nominatimSearchUrlWithParams stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     

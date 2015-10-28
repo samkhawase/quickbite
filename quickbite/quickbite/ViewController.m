@@ -38,6 +38,7 @@
     self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
     // Set a movement threshold for new events.
     self.locationManager.distanceFilter = 500; // meters
+    [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager startUpdatingLocation];
 
 }
@@ -84,7 +85,7 @@
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
     
     // If the event is recent, do something with it.
-    if (abs(howRecent) < 15.0) {
+    if (fabs(howRecent) < 15.0) {
         
         NSLog(@"latitude %+.6f, longitude %+.6f\n",
               self.currentLocation.coordinate.latitude,

@@ -145,60 +145,7 @@
     
     return arrayWithLocations;
     
-    /*
-    [fetchedLocations enumerateObjectsUsingBlock:^(LocationDetail *loopLocation, NSUInteger idx, BOOL *stop){
 
-        NSLog(@"%@ - %@", loopLocation.latitude, loopLocation.longitude);
-        
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        
-        [fetchRequest setEntity:entityDescription];
-        
-        NSPredicate *checkPredicate = [NSPredicate predicateWithFormat:@"(latitude BEGINSWITH %@) AND (longitude BEGINSWITH %@)",
-                                       loopLocation.latitude, loopLocation.longitude];
-        
-        [fetchRequest setPredicate:checkPredicate];
-        
-        NSError * fetchError;
-        NSArray *results = [saveMoc executeFetchRequest:fetchRequest error:&fetchError];
-        
-        if (results.count > 0) {
-            // kalti, entity exists
-            //*stop = YES;
-            return;
-        }
-        
-        NSManagedObject *locationInQuestion;
-        locationInQuestion = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:saveMoc];
-        
-        // append the signs for the lat-longs
-        if ([loopLocation.latitude intValue] > 0) {
-            loopLocation.latitude = [NSString stringWithFormat:@"+%@", loopLocation.latitude];
-        } else {
-            loopLocation.latitude = [NSString stringWithFormat:@"-%@", loopLocation.latitude];
-        }
-        
-        if ([loopLocation.longitude intValue] > 0) {
-            loopLocation.longitude = [NSString stringWithFormat:@"+%@", loopLocation.longitude];
-        } else {
-            loopLocation.longitude = [NSString stringWithFormat:@"-%@", loopLocation.longitude];
-        }
-        
-        [locationInQuestion setValue:loopLocation.osm_id forKey:@"osm_id"];
-        [locationInQuestion setValue:loopLocation.latitude forKey:@"latitude"];
-        [locationInQuestion setValue:loopLocation.longitude forKey:@"longitude"];
-        [locationInQuestion setValue:loopLocation.display_name forKey:@"display_name"];
-        [locationInQuestion setValue:loopLocation.type forKey:@"type"];
-        [locationInQuestion setValue:loopLocation.place_id forKey:@"place_id"];
-        [locationInQuestion setValue:loopLocation.osm_type forKey:@"osm_type"];
-//        [locationInQuestion setValue:loopLocation.importance forKey:@"importance"];
-//        [locationInQuestion setValue:loopLocation.icon forKey:@"icon"];
-
-        NSError *saveError;
-        NSLog(@"saved? %@",[saveMoc save:&saveError] ? @"YES" : @"NO");
-        
-    }];
-    */
 }
 
 /* No need for this, CLLocationDistance is better

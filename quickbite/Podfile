@@ -3,7 +3,7 @@
 
 target "quickbite" do
 
-pod 'RestKit', '~> 0.23'
+pod 'RestKit', '~> 0.25'
 
 end
 
