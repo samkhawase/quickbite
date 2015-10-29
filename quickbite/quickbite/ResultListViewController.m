@@ -90,7 +90,7 @@ static NSString *const cellId = @"LocationCell";
     // fetch only if the list is empty
     [DataFetchService getPlacesNearLocation:self.latitude
                                   longitude:self.longitude
-                           withLocationType:@"pub"
+                           withLocationType:@"restaurant"
                                   withBlock:^(NSData *data,NSURLResponse *response,NSError *error)
      {
          if (nil == error) {
